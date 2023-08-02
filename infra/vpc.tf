@@ -14,15 +14,15 @@ module "vpc" {
   single_nat_gateway           = true # single one nat gateway to make it cheaper, ideally should have each one for each different zone
   enable_dns_hostnames         = true
   create_database_subnet_group = true
-}
 
-# tags help kubernetes to identify the subnets
-public_subnet_tags = {
-  "kubernetes.io/cluster/${var.prefix}-cluster" = "shared"
-  "kubernetes.io/role/elb"                      = 1 # load balancer
-}
+  # tags help kubernetes to identify the subnets
+  public_subnet_tags = {
+    "kubernetes.io/cluster/${var.prefix}-cluster" = "shared"
+    "kubernetes.io/role/elb"                      = 1 # load balancer
+  }
 
-private_subnet_tags = {
-  "kubernetes.io/cluster/${var.prefix}-cluster" = "shared"
-  "kubernetes.io/role/elb"                      = 1 # load balancer
+  private_subnet_tags = {
+    "kubernetes.io/cluster/${var.prefix}-cluster" = "shared"
+    "kubernetes.io/role/elb"                      = 1 # load balancer
+  }
 }
