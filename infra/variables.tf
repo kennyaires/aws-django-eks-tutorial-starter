@@ -5,5 +5,10 @@ variable "region" {
 
 variable "prefix" {
   description = "Prefix to be assigned to all resources"
-  default     = "django"
+  default     = "django-k8s"
+}
+
+variable "db_password" {
+  description = "value of the password for the RDS database instance"
+  default     = "samplepassword123"
 }
