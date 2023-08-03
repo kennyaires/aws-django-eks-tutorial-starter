@@ -9,7 +9,7 @@ module "db" {
   family         = "postgres14"
 
   allocated_storage   = 5
-  skip_final_snapshot = true
+  skip_final_snapshot = true # real world might be better put 'false'
 
   db_name                = "djangoproject"
   username               = "djangouser"
@@ -34,8 +34,8 @@ module "rds_security_group" {
       from_port   = 5432
       to_port     = 5432
       protocol    = "tcp"
-      description = "RDS securitiy group"
-      cidr_blocks = module.vpc.vpc_id
+      description = "RDS security group"
+      cidr_blocks = module.vpc.vpc_cidr_block
     }
   ]
 
