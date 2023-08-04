@@ -54,7 +54,7 @@ spec:
           persistentVolumeClaim:
             claimName: django-app-pvc
       containers:
-        - image: 875086615781.dkr.ecr.eu-west-2.amazonaws.com/django-k8s-app:latest # Change this to your ECR repo for app
+        - image: 160882316568.dkr.ecr.eu-west-2.amazonaws.com/django-k8s-app:latest # Change this to your ECR repo for app
           name: app
           ports:
             - containerPort: 8080
@@ -82,7 +82,7 @@ spec:
                   name: django
                   key: secret
 
-        - image: 875086615781.dkr.ecr.eu-west-2.amazonaws.com/django-k8s-proxy:latest # Change this to your ECR repo for proxy
+        - image: 160882316568.dkr.ecr.eu-west-2.amazonaws.com/django-k8s-proxy:latest # Change this to your ECR repo for proxy
           name: proxy
           ports:
             - containerPort: 8000
