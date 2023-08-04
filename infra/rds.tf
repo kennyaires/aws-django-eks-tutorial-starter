@@ -17,7 +17,7 @@ module "db" {
   password               = var.db_password
 
   multi_az               = false
-  db_subnet_group_name   = module.vpc.database_subnet_group_name
+  db_subnet_group_name   = module.vpc.database_subnet_group
   vpc_security_group_ids = [module.rds_security_group.security_group_id]
 }
 
@@ -26,7 +26,7 @@ module "rds_security_group" {
   version = "~> 4.17.2"
 
   name        = "${var.prefix}-rds-sg"
-  description = "Security group for RDS database"
+  description = "RDS security group"
   vpc_id      = module.vpc.vpc_id
 
   ingress_with_cidr_blocks = [
@@ -34,9 +34,8 @@ module "rds_security_group" {
       from_port   = 5432
       to_port     = 5432
       protocol    = "tcp"
-      description = "RDS security group"
+      description = "PostgreSQL access from within VPC"
       cidr_blocks = module.vpc.vpc_cidr_block
     }
   ]
-
 }
